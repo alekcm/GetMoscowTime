@@ -29,7 +29,6 @@ public class TimeController : MonoBehaviour
         {
             TimeData timeData = JsonUtility.FromJson<TimeData>(webRequest.downloadHandler.text);
             string time = Regex.Match(timeData.datetime, @"\d{2}:\d{2}:\d{2}").ToString();
-            //print(time);
             ShowTimeAllert(time);
 
         }
@@ -37,27 +36,6 @@ public class TimeController : MonoBehaviour
         {
             Debug.Log("Error: " + webRequest.error);
         }
-        //var time = StartCoroutine(SendTimeRequest());
 
-    }
-
-    IEnumerator SendTimeRequest()
-    {
-        UnityWebRequest webRequest = UnityWebRequest.Get(Api);
-        yield return webRequest.SendWebRequest();
-        if (webRequest.isNetworkError || webRequest.isHttpError)
-        {
-            Debug.Log("Error: " + webRequest.error);
-            yield return ("Error: " + webRequest.error);
-        }
-        else
-        {
-            TimeData timeData = JsonUtility.FromJson<TimeData>(webRequest.downloadHandler.text);
-            string time = Regex.Match(timeData.datetime, @"\d{2}:\d{2}:\d{2}").ToString();
-            print(time);
-            yield return time;
-
-        }
-        
     }
 }
