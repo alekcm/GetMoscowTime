@@ -16,7 +16,7 @@ public class TimeController : MonoBehaviour
     {
         public string datetime;
     }
-    const string Api = "http://worldtimeapi.org/api/ip";
+    const string Api = "https://worldtimeapi.org/api/timezone/Europe/Moscow";
     public async void GetMoscowTime()
     {
 
